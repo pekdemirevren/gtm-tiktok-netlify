@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ürün Sayfası</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Entegrasyon Sayfası</title>
 
   <!-- Meta Pixel Code -->
   <script>
@@ -24,27 +24,94 @@
   </noscript>
   <!-- End Meta Pixel Code -->
 
-  <!-- TikTok Pixel Code Start -->
+  <!-- TikTok Pixel Base Code -->
   <script>
     !function (w, d, t) {
-      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-      var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-      ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-      ttq.load('D2AOM0JC77U0CGBGTU5G');
+      w.TiktokAnalyticsObject = t;
+      var ttq = w[t] = w[t] || [];
+      ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie"];
+      ttq.setAndDefer = function (t, e) {
+        t[e] = function () {
+          t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+        }
+      };
+      for (var i = 0; i < ttq.methods.length; i++) {
+        ttq.setAndDefer(ttq, ttq.methods[i]);
+      }
+      ttq.instance = function (t) {
+        var e = ttq._i[t] || [];
+        for (var n = 0; n < ttq.methods.length; n++) {
+          ttq.setAndDefer(e, ttq.methods[n]);
+        }
+        return e
+      };
+      ttq.load = function (e, n) {
+        var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
+        ttq._i = ttq._i || {};
+        ttq._i[e] = [];
+        ttq._i[e]._u = i;
+        ttq._t = ttq._t || {};
+        ttq._t[e] = +new Date();
+        ttq._o = ttq._o || {};
+        ttq._o[e] = n || {};
+        var o = document.createElement("script");
+        o.type = "text/javascript";
+        o.async = !0;
+        o.src = i + "?sdkid=" + e + "&lib=" + t;
+        var a = document.getElementsByTagName("script")[0];
+        a.parentNode.insertBefore(o, a)
+      };
+      ttq.load('D2AOM0JC77U0CGBGTU5G');  // Buraya kendi TikTok Pixel ID’ni yaz.
       ttq.page();
     }(window, document, 'ttq');
   </script>
-  <!-- TikTok Pixel Code End -->
+  <!-- End TikTok Pixel Base Code -->
 
+  <!-- TikTok Events Code -->
+  <script>
+    // PII verisi varsa burada SHA-256 ile hash’leyip ekleyin
+    /*
+    ttq.identify({
+      "email": "<hashed_email_address>",
+      "phone_number": "<hashed_phone_number>",
+      "external_id": "<hashed_external_id>"
+    });
+    */
+
+    ttq.track('ViewContent', {
+      contents: [{
+        content_id: "1077218",
+        content_type: "product",
+        content_name: "shirt"
+      }],
+      value: 100,
+      currency: "USD"
+    });
+
+    ttq.track('AddToCart', {
+      contents: [{
+        content_id: "1077218",
+        content_type: "product",
+        content_name: "shirt"
+      }],
+      value: 100,
+      currency: "USD"
+    });
+
+    // Diğer event’leri aşağıya ekleyebilirsin:
+    // ttq.track('Search', {...});
+    // ttq.track('AddToWishlist', {...});
+    // ttq.track('InitiateCheckout', {...});
+    // ttq.track('AddPaymentInfo', {...});
+    // ttq.track('PlaceAnOrder', {...});
+    // ttq.track('CompleteRegistration', {...});
+    // ttq.track('Purchase', {...});
+  </script>
+  <!-- End TikTok Events Code -->
 </head>
+
 <body>
-  <h1>Akıllı Sayılar - Eğitici Ahşap Set</h1>
-  <p>
-    Montessori eğitimine uygun bu ahşap sayılar seti, çocukların bilişsel gelişimini destekler.
-    Toplama ve çıkarma blokları ile eğlenceli öğrenme deneyimi sunar.
-  </p>
-  <a href="https://www.trendyol.com/guimo/oyuncak-sayilar-montessori-egitici-ahsap-sayi-bloklar-toplama-cikarma-seti-bilissel-gelisim-oyuncagi-p-965896766?merchantId=1060794&filterOverPriceListings=false" target="_blank">
-    Ürünü Trendyol'da Gör
-  </a>
+  <h1>Pixel Test Sayfası</h1>
+  <p>Bu sayfada Meta ve TikTok Pixel kodları entegre edilmiştir.</p>
 </body>
 </html>
